@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+{% block header_title %}Settings{% endblock %}
+
+{% block content %}
+<div class="max-w-3xl mx-auto space-y-6">
+
+    <!-- Data Export -->
+    <div class="bg-slate-800 rounded-xl shadow-sm border border-slate-700 overflow-hidden hover-lift">
+        <div class="p-6 border-b border-slate-700">
+            <h3 class="text-lg font-semibold text-slate-100">Data Export</h3>
+            <p class="text-sm text-slate-400 mt-1">Export all extracted profile data for external analysis.</p>
+        </div>
+        <div class="p-6 bg-slate-900/50 flex flex-wrap gap-4">
+            <a href="/api/export/csv" class="flex items-center px-4 py-2 bg-slate-800 border border-slate-600 rounded-lg text-sm font-medium text-slate-300 hover:bg-slate-700 hover:text-blue-400 transition-colors shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
+                <i class="fa-solid fa-file-csv text-green-500 mr-2 text-lg"></i>
+                Export as CSV
+            </a>
+            <a href="/api/export/json" class="flex items-center px-4 py-2 bg-slate-800 border border-slate-600 rounded-lg text-sm font-medium text-slate-300 hover:bg-slate-700 hover:text-blue-400 transition-colors shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
+                <i class="fa-solid fa-file-code text-blue-500 mr-2 text-lg"></i>
+                Export as JSON
+            </a>
+        </div>
+    </div>
+
+    <!-- PWA & Cache Management -->
+    <div class="bg-slate-800 rounded-xl shadow-sm border border-slate-700 overflow-hidden hover-lift">
+        <div class="p-6 border-b border-slate-700">
+            <h3 class="text-lg font-semibold text-slate-100">Dashboard Cache & Installation</h3>
+            <p class="text-sm text-slate-400 mt-1">Manage local offline data and install the dashboard as an app.</p>
+        </div>
+        <div class="p-6 divide-y divide-slate-700">
+            <!-- Install App -->
+            <div class="flex items-center justify-between pb-6" id="install-app-section" style="display: none;">
+                <div>
+                    <p class="text-sm font-medium text-slate-300">Install Dashboard App</p>
+                    <p class="text-xs text-slate-500 mt-1">Install on your home screen for quick offline access.</p>
+                </div>
+                <button id="install-app-btn" class="px-4 py-2 bg-blue-900/50 text-blue-400 border border-blue-800 rounded-lg text-sm font-medium hover:bg-blue-800 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    Install App
+                </button>
+            </div>
+            
+            <!-- Clear Cache -->
+            <div class="flex items-center justify-between pt-6">
+                <div>
+                    <p class="text-sm font-medium text-slate-300">Clear Local Cache</p>
+                    <p class="text-xs text-slate-500 mt-1" id="cache-status-text">Last updated: checking...</p>
+                </div>
+                <button onclick="PWA.clearCache()" class="px-4 py-2 bg-red-900/50 text-red-400 border border-red-800 rounded-lg text-sm font-medium hover:bg-red-800 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    Clear Cache
+                </button>
+            </div>
+        </div>
+    </div>
+
+</div>
+{% endblock %}

@@ -1,0 +1,50 @@
+# EduIG-Pipeline — Python Dependencies
+# Updated for Python 3.14 compatibility (May 2026)
+# Install: pip install -r requirements.txt
+
+# ── Core Acquisition ──────────────────────────────────────────────────────────
+playwright>=1.41.0          # Browser automation (Chromium); NO Selenium
+httpx>=0.26.0               # Async HTTP client; NO requests library
+
+# ── Data Validation ───────────────────────────────────────────────────────────
+pydantic>=2.5.0             # v2 ONLY — runtime validation, Pydantic models
+
+# ── Scheduling & Orchestration ────────────────────────────────────────────────
+schedule>=1.2.1             # Simple cron-like scheduler; NO Celery/Airflow
+
+# ── Structured Logging ────────────────────────────────────────────────────────
+structlog>=23.2.0           # JSON structured logs; NO print() statements
+
+# ── Auth ──────────────────────────────────────────────────────────────────────
+cryptography>=41.0.0
+pyotp>=2.9.0
+
+# ── Data Processing & Analysis ────────────────────────────────────────────────
+pandas>=2.2.0               # DataFrame operations, CSV I/O (3.14-compatible)
+polars>=0.20.0              # Fast DataFrame alternative
+
+# ── Configuration ─────────────────────────────────────────────────────────────
+pyyaml>=6.0.1               # YAML config loader; NO JSON config files
+python-dotenv>=1.0.0        # Load .env into environment
+
+# ── Testing ───────────────────────────────────────────────────────────────────
+pytest>=7.4.4               # Test runner
+pytest-asyncio>=0.23.0      # Async test support
+pytest-cov>=4.1.0           # Coverage reporting
+types-PyYAML>=6.0.12        # Type hints for PyYAML
+
+# ── Analysis / Notebooks (optional) ──────────────────────────────────────────
+matplotlib>=3.8.2           # Plotting
+seaborn>=0.13.0             # Statistical visualizations
+jupyter>=1.0.0              # Jupyter notebook server
+
+# ── Development / Quality ─────────────────────────────────────────────────────
+black>=23.12.0              # Code formatter
+isort>=5.13.0               # Import sorter
+mypy>=1.7.0                 # Static type checker (strict mode required)
+flake8>=7.0.0               # Linter
+
+# ── Web UI ────────────────────────────────────────────────────────────────────
+fastapi>=0.109.0            # Web framework
+uvicorn>=0.27.0             # ASGI server
+flask>=3.0.0                # Flask dashboard

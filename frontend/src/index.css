@@ -1,0 +1,22 @@
+@import "tailwindcss";
+
+@theme {
+  --color-dark-900: #0F172A;
+  --color-dark-800: #1E293B;
+  --color-dark-700: #334155;
+  --color-primary: #3B82F6;
+  --color-accent: #10B981;
+}
+
+@layer utilities {
+  .glass {
+    @apply bg-dark-800/60 backdrop-blur-md border border-dark-700/50 shadow-xl;
+  }
+}
+
+body {
+  @apply bg-dark-900 text-slate-200 min-h-screen relative overflow-x-hidden;
+  background-image: 
+    radial-gradient(circle at 15% 50%, rgba(59, 130, 246, 0.15) 0%, transparent 50%),
+    radial-gradient(circle at 85% 30%, rgba(139, 92, 246, 0.15) 0%, transparent 50%);
+}

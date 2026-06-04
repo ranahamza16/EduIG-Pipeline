@@ -1,0 +1,85 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyc
+*.pyo
+
+# Virtual environments
+venv/
+.venv/
+env/
+ENV/
+
+# Environment variables (NEVER commit)
+.env
+config/.env
+
+# Data directories (too large, contains PII)
+data/raw/*
+data/processed/*
+data/logs/*
+data/*.enc
+!data/raw/.gitkeep
+!data/processed/.gitkeep
+!data/logs/.gitkeep
+
+# SQLite database files
+*.db
+*.sqlite
+*.sqlite3
+
+# Testing & coverage
+.pytest_cache/
+.coverage
+coverage.xml
+htmlcov/
+*.cover
+
+# Type checking
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# IDE / Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Jupyter notebooks checkpoints
+.ipynb_checkpoints/
+notebooks/.ipynb_checkpoints/
+
+# Build artifacts
+*.egg-info/
+dist/
+build/
+*.egg
+MANIFEST
+
+# Logs (local)
+*.log
+
+# Pre-commit
+.pre-commit-hooks.yaml
+
+# Secrets scanning
+.secrets.baseline
+data/exports/*
+!data/exports/.gitkeep
+data/reports/*
+!data/reports/.gitkeep
+
+# Temporary Data and Exports
+data/artifacts/
+data/test_exports/
+data/session_cookies.json
+logs/
+

@@ -1,0 +1,50 @@
+rate_limit:
+  requests_per_hour: 20
+  base_delay: 5.0
+  max_retries: 3
+  backoff_factor: 2.0
+  jitter_min: 0.5
+  jitter_max: 1.5
+  daily_cap: 50
+
+paths:
+  raw_data: "data/raw"
+  processed: "data/processed"
+  logs: "data/logs"
+
+compliance:
+  max_profiles_per_run: 50
+  delete_raw_after_days: 7
+  require_consent: true
+  retention_enabled: true
+
+browser:
+  headless: true
+  viewport_width: 1280
+  viewport_height: 800
+  timeout: 30000
+  user_agent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
+
+api:
+  base_url: "https://graph.facebook.com/v18.0"
+  timeout: 30.0
+  max_connections: 10
+
+logging:
+  level: "INFO"
+  format: "json"
+  rotation_days: 1
+  retention_days: 7
+  anonymize_pii: false
+
+authentication:
+  enabled: true
+  max_session_duration_minutes: 30
+  stealth_level: "high"
+  auth_requests_per_hour: 20
+  auth_max_requests_per_day: 50
+  auth_cooldown_hours: 24
+
+anti_detection:
+  human_delay_min_ms: 2000
+  human_delay_max_ms: 5000

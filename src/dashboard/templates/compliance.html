@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+
+{% block header_title %}Audit & Compliance{% endblock %}
+
+{% block content %}
+<div class="space-y-6">
+    
+    <!-- Runs Summary -->
+    <div class="bg-slate-800 rounded-xl shadow-sm border border-slate-700 p-6 hover-lift">
+        <h3 class="text-lg font-semibold text-slate-100 mb-4 border-b border-slate-700 pb-2">Recent Execution Runs</h3>
+        <div class="overflow-x-auto">
+            <table class="w-full text-sm text-left text-slate-400">
+                <thead class="text-xs text-slate-400 uppercase bg-slate-900/50">
+                    <tr>
+                        <th scope="col" class="px-4 py-2 font-medium">Run ID</th>
+                        <th scope="col" class="px-4 py-2 font-medium">Started At</th>
+                        <th scope="col" class="px-4 py-2 font-medium">Completed At</th>
+                        <th scope="col" class="px-4 py-2 font-medium text-center">Targets</th>
+                        <th scope="col" class="px-4 py-2 font-medium text-center">Success</th>
+                    </tr>
+                </thead>
+                <tbody id="runsTableBody" class="divide-y divide-slate-700 hover:divide-slate-600">
+                    <!-- Runs injected by JS -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Audit Events -->
+    <div class="bg-slate-800 rounded-xl shadow-sm border border-slate-700 p-6 hover-lift">
+        <div class="flex items-center justify-between mb-4 border-b border-slate-700 pb-2">
+            <h3 class="text-lg font-semibold text-slate-100">Security & Audit Events</h3>
+            <span class="text-xs px-2 py-1 bg-green-900/50 text-green-400 rounded-full font-medium">Real-time flat log</span>
+        </div>
+        <div class="overflow-x-auto">
+            <table class="w-full text-sm text-left text-slate-400">
+                <thead class="text-xs text-slate-400 uppercase bg-slate-900/50">
+                    <tr>
+                        <th scope="col" class="px-4 py-2 font-medium">Timestamp</th>
+                        <th scope="col" class="px-4 py-2 font-medium">Level</th>
+                        <th scope="col" class="px-4 py-2 font-medium">Event</th>
+                        <th scope="col" class="px-4 py-2 font-medium">Target</th>
+                        <th scope="col" class="px-4 py-2 font-medium">Details</th>
+                    </tr>
+                </thead>
+                <tbody id="auditTableBody" class="divide-y divide-slate-700 hover:divide-slate-600">
+                    <!-- Audit events injected by JS -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>
+{% endblock %}
+
+{% block extra_scripts %}
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        Dashboard.loadCompliance();
+    });
+</script>
+{% endblock %}

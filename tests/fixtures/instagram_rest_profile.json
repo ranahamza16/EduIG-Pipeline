@@ -1,0 +1,103 @@
+{
+    "data": {
+        "user": {
+            "biography": "Test biography",
+            "business_category_name": "Creators & Celebrities",
+            "edge_follow": {
+                "count": 456
+            },
+            "edge_followed_by": {
+                "count": 1247
+            },
+            "edge_owner_to_timeline_media": {
+                "count": 89,
+                "edges": [
+                    {
+                        "node": {
+                            "__typename": "GraphImage",
+                            "edge_media_preview_like": {
+                                "count": 234
+                            },
+                            "edge_media_to_caption": {
+                                "edges": [
+                                    {
+                                        "node": {
+                                            "text": "Post 1 caption #test"
+                                        }
+                                    }
+                                ]
+                            },
+                            "edge_media_to_comment": {
+                                "count": 12
+                            },
+                            "id": "1",
+                            "is_video": false,
+                            "shortcode": "post1",
+                            "taken_at_timestamp": 1704067200
+                        }
+                    },
+                    {
+                        "node": {
+                            "__typename": "GraphImage",
+                            "edge_media_preview_like": {
+                                "count": 100
+                            },
+                            "edge_media_to_caption": {
+                                "edges": [
+                                    {
+                                        "node": {
+                                            "text": "Post 2 caption #test"
+                                        }
+                                    }
+                                ]
+                            },
+                            "edge_media_to_comment": {
+                                "count": 5
+                            },
+                            "id": "2",
+                            "is_video": false,
+                            "shortcode": "post2",
+                            "taken_at_timestamp": 1704067200
+                        }
+                    },
+                    {
+                        "node": {
+                            "__typename": "GraphImage",
+                            "edge_media_preview_like": {
+                                "count": 50
+                            },
+                            "edge_media_to_caption": {
+                                "edges": [
+                                    {
+                                        "node": {
+                                            "text": "Post 3 caption #test"
+                                        }
+                                    }
+                                ]
+                            },
+                            "edge_media_to_comment": {
+                                "count": 2
+                            },
+                            "id": "3",
+                            "is_video": false,
+                            "shortcode": "post3",
+                            "taken_at_timestamp": 1704067200
+                        }
+                    }
+                ],
+                "page_info": {
+                    "end_cursor": "end_cursor_123",
+                    "has_next_page": true
+                }
+            },
+            "external_url": "https://example.com",
+            "full_name": "Test User",
+            "id": "user123",
+            "is_private": false,
+            "is_verified": true,
+            "profile_pic_url": "https://example.com/pic.jpg",
+            "profile_pic_url_hd": "https://example.com/pic_hd.jpg",
+            "username": "test_user"
+        }
+    }
+}

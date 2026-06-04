@@ -1,0 +1,2 @@
+# Placeholder — keeps data/processed/ tracked by git
+# Actual processed CSV/Parquet files are gitignored (see .gitignore)

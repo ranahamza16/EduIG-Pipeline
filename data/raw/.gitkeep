@@ -1,0 +1,2 @@
+# Placeholder — keeps data/raw/ tracked by git
+# Actual raw data files are gitignored (see .gitignore)

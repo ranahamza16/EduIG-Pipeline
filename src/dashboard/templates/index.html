@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+
+{% block header_title %}Overview Dashboard{% endblock %}
+
+{% block content %}
+    <!-- KPI Cards -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <!-- Profiles Extracted -->
+        <div class="bg-slate-800 rounded-xl p-6 border border-slate-700 shadow-sm hover-lift relative overflow-hidden group">
+            <div class="flex items-center justify-between mb-4">
+                <h3 class="text-sm font-medium text-slate-400">Total Profiles</h3>
+                <div class="w-10 h-10 rounded-full bg-blue-900/50 text-blue-400 flex items-center justify-center transition-transform group-hover:scale-110">
+                    <i class="fa-solid fa-users"></i>
+                </div>
+            </div>
+            <p class="text-2xl font-bold text-slate-100" id="stat-profiles"><span class="animate-pulse bg-slate-700 h-8 w-16 block rounded"></span></p>
+        </div>
+
+        <!-- Total Posts -->
+        <div class="bg-slate-800 rounded-xl p-6 border border-slate-700 shadow-sm hover-lift relative overflow-hidden group">
+            <div class="flex items-center justify-between mb-4">
+                <h3 class="text-sm font-medium text-slate-400">Total Posts Analyzed</h3>
+                <div class="w-10 h-10 rounded-full bg-purple-900/50 text-purple-400 flex items-center justify-center transition-transform group-hover:scale-110">
+                    <i class="fa-solid fa-images"></i>
+                </div>
+            </div>
+            <p class="text-2xl font-bold text-slate-100" id="stat-posts"><span class="animate-pulse bg-slate-700 h-8 w-16 block rounded"></span></p>
+        </div>
+
+        <!-- Avg Engagement -->
+        <div class="bg-slate-800 rounded-xl p-6 border border-slate-700 shadow-sm hover-lift relative overflow-hidden group" id="stat-engagement-card">
+            <div class="flex items-center justify-between mb-4">
+                <h3 class="text-sm font-medium text-slate-400">Global Engagement Rate</h3>
+                <div class="w-10 h-10 rounded-full bg-pink-900/50 text-pink-400 flex items-center justify-center transition-transform group-hover:scale-110">
+                    <i class="fa-solid fa-heart-pulse"></i>
+                </div>
+            </div>
+            <p class="text-2xl font-bold text-slate-100" id="stat-engagement"><span class="animate-pulse bg-slate-700 h-8 w-16 block rounded"></span></p>
+        </div>
+
+        <!-- Last Execution -->
+        <div class="bg-slate-800 rounded-xl p-6 border border-slate-700 shadow-sm hover-lift relative overflow-hidden group">
+            <div class="flex items-center justify-between mb-4">
+                <h3 class="text-sm font-medium text-slate-400">Last Execution</h3>
+                <div class="w-10 h-10 rounded-full bg-green-900/50 text-green-400 flex items-center justify-center transition-transform group-hover:scale-110">
+                    <i class="fa-solid fa-clock-rotate-left"></i>
+                </div>
+            </div>
+            <p class="text-lg font-bold text-slate-100 truncate" id="stat-last-run"><span class="animate-pulse bg-slate-700 h-8 w-32 block rounded"></span></p>
+        </div>
+    </div>
+
+    <!-- Charts Section -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-6">
+        <!-- Follower Distribution -->
+        <div class="bg-slate-800 rounded-xl p-6 border border-slate-700 shadow-sm hover-lift transition-all" id="followerChartCard">
+            <h3 class="text-lg font-semibold text-slate-100 mb-4">Follower Distribution</h3>
+            <div class="relative w-full chart-container-sm">
+                <canvas id="followerChart"></canvas>
+            </div>
+        </div>
+
+        <!-- Extraction Source Breakdown -->
+        <div class="bg-slate-800 rounded-xl p-6 border border-slate-700 shadow-sm hover-lift transition-all" id="sourceChartCard">
+            <h3 class="text-lg font-semibold text-slate-100 mb-4">Extraction Source</h3>
+            <div class="relative w-full chart-container-sm">
+                <canvas id="sourceChart"></canvas>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block extra_scripts %}
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        Dashboard.loadOverview();
+    });
+</script>
+{% endblock %}

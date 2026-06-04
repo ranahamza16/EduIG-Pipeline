@@ -1,0 +1,111 @@
+{% extends "base.html" %}
+
+{% block header_title %}Extracted Profiles{% endblock %}
+
+{% block content %}
+<div class="space-y-6">
+    <!-- Controls -->
+    <div class="bg-slate-800 rounded-xl shadow-sm border border-slate-700 p-4 sm:p-6 hover-lift">
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+            
+            <div class="relative flex-1 max-w-md">
+                <label for="searchInput" class="sr-only">Search profiles</label>
+                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                    <i class="fa-solid fa-search text-slate-500"></i>
+                </div>
+                <input type="text" id="searchInput" placeholder="Search profiles..." class="block w-full pl-10 pr-3 py-2 border border-slate-600 rounded-lg bg-slate-900 text-slate-100 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-colors">
+            </div>
+            
+            <div class="flex items-center space-x-2">
+                <label for="sortBy" class="text-sm font-medium text-slate-400 hidden sm:block">Sort by:</label>
+                <select id="sortBy" class="block w-full pl-3 pr-10 py-2 text-base border-slate-600 bg-slate-900 text-slate-100 focus:outline-none focus:ring-2 focus:ring-blue-500 sm:text-sm rounded-lg transition-colors">
+                    <option value="extracted_at">Extraction Date</option>
+                    <option value="followers">Followers</option>
+                    <option value="posts_count">Posts</option>
+                    <option value="avg_engagement_rate">Engagement Rate</option>
+                </select>
+                <button id="sortOrderBtn" data-order="desc" class="p-2 border border-slate-600 bg-slate-900 text-slate-400 rounded-lg hover:bg-slate-700 hover:text-slate-100 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500" aria-label="Toggle sort order">
+                    <i class="fa-solid fa-arrow-down-z-a" id="sortOrderIcon"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Data Table -->
+    <div class="bg-slate-800 rounded-xl shadow-sm border border-slate-700 overflow-hidden hover-lift">
+        <div class="overflow-x-auto">
+            <table class="w-full text-sm text-left text-slate-400">
+                <thead class="text-xs text-slate-400 uppercase bg-slate-900/50">
+                    <tr>
+                        <th scope="col" class="px-6 py-3 font-medium">Profile</th>
+                        <th scope="col" class="px-6 py-3 font-medium">Followers</th>
+                        <th scope="col" class="px-6 py-3 font-medium">Posts</th>
+                        <th scope="col" class="px-6 py-3 font-medium">Engagement</th>
+                        <th scope="col" class="px-6 py-3 font-medium">Source</th>
+                        <th scope="col" class="px-6 py-3 font-medium">Extracted</th>
+                        <th scope="col" class="px-6 py-3 font-medium">Action</th>
+                    </tr>
+                </thead>
+                <tbody id="profilesTableBody" class="divide-y divide-slate-700 hover:divide-slate-600">
+                <!-- Data populated by JS -->
+                <tr>
+                    <td colspan="7" class="px-6 py-10 text-center text-slate-500">
+                        <i class="fa-solid fa-circle-notch fa-spin text-2xl mb-2"></i>
+                        <p>Loading profiles...</p>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <!-- Pagination -->
+        <div class="px-6 py-4 border-t border-slate-700 flex items-center justify-between bg-slate-800">
+            <div class="text-sm text-slate-400" id="paginationInfo">
+                Showing <span class="font-semibold text-slate-200">0</span> to <span class="font-semibold text-slate-200">0</span> of <span class="font-semibold text-slate-200">0</span> Entries
+            </div>
+            <div class="flex rounded-md shadow-sm" id="paginationControls">
+                <!-- Injected via JS -->
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_scripts %}
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        Dashboard.loadProfiles();
+        
+        // Search debounce
+        let searchTimeout;
+        document.getElementById('searchInput').addEventListener('input', (e) => {
+            clearTimeout(searchTimeout);
+            searchTimeout = setTimeout(() => {
+                Dashboard.currentProfilePage = 1;
+                Dashboard.loadProfiles();
+            }, 500);
+        });
+        
+        // Sort change
+        document.getElementById('sortBy').addEventListener('change', () => {
+            Dashboard.loadProfiles();
+        });
+        
+        // Toggle sort order
+        document.getElementById('sortOrderBtn').addEventListener('click', (e) => {
+            const btn = e.currentTarget;
+            const icon = document.getElementById('sortOrderIcon');
+            const currentOrder = btn.dataset.order;
+            
+            if (currentOrder === 'desc') {
+                btn.dataset.order = 'asc';
+                icon.className = 'fa-solid fa-arrow-up-a-z';
+            } else {
+                btn.dataset.order = 'desc';
+                icon.className = 'fa-solid fa-arrow-down-z-a';
+            }
+            Dashboard.loadProfiles();
+        });
+    });
+</script>
+{% endblock %}
